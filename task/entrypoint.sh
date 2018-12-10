@@ -2,4 +2,4 @@
 
 set -eu
 
-pwsh -c ./task/run.ps1 $*
+pwsh -c ./run.ps1 $*
