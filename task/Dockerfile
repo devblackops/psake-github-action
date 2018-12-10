@@ -1,7 +1,7 @@
 FROM mcr.microsoft.com/powershell:6.1.0-ubuntu-18.04 as base
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted; \
-    Install-Module psake        -RequiredVersion 4.8.0-alpha -Repository PSGallery -AllowPrelease; \
+    Install-Module psake        -RequiredVersion 4.8.0-alpha -Repository PSGallery -AllowPrerelease; \
     Install-Module PSDepend     -RequiredVersion 0.3.0       -Repository PSGallery; \
     Install-Module BuildHelpers -RequiredVersion 2.0.1       -Repository PSGallery
 
