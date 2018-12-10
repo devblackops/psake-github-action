@@ -2,4 +2,4 @@
 
 set -eu
 
-pwsh -f ./run.ps1 $*
+pwsh -f /run.ps1 $*
