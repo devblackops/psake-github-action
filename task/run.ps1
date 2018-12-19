@@ -18,7 +18,7 @@ if (-not $env:PSAKE_FILE)    {$env:PSAKE_FILE    = './psakeFile.ps1'}
 if (-not $env:PSDEPEND_FILE) {$env:PSDEPEND_FILE = './requirements.psd1'}
 
 # Bootstrap dependencies...or not
-if (($env:SKIP_REQS -ne 'true' -and $env:SKIP_REQS -eq 1) -and (Test-Path -Path $env:PSDEPEND_FILE)) {
+if (($env:SKIP_REQS -ne 'true' -and $env:SKIP_REQS -ne 1) -and (Test-Path -Path $env:PSDEPEND_FILE)) {
     Invoke-PSDepend -Path $env:PSDEPEND_FILE -Install -Import -Force -WarningAction SilentlyContinue
 }
 
