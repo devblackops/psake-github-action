@@ -6,6 +6,8 @@ RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted; \
     Install-Module BuildHelpers -RequiredVersion 2.0.1       -Repository PSGallery
 
 FROM base as psake-build
+LABEL "name"                            = "github-action-psake"
+LABEL "version"                         = "1.0.0"
 LABEL "com.github.actions.name"         = "psake task"
 LABEL "com.github.actions.description"  = "Run psake tasks"
 LABEL "com.github.actions.icon"         = "box"
