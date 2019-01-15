@@ -12,14 +12,15 @@ if (-not $env:PSDEPEND_FILE) {$env:PSDEPEND_FILE = './requirements.psd1'}
 
 # Bootstrap dependencies...or not
 if (($env:SKIP_REQS -ne 'true' -and $env:SKIP_REQS -ne 1) -and (Test-Path -Path $env:PSDEPEND_FILE)) {
-    Invoke-PSDepend -Path $env:PSDEPEND_FILE -Install -Import -Force -WarningAction SilentlyContinue
+    Invoke-PSDepend -Path $env:PSDEPEND_FILE -Install -Import -Force -WarningAction SilentlyContinue -ErrorAction Stop
 }
 
 # Execute psake task(s)
 if (Test-Path -Path $env:PSAKE_FILE) {
     Invoke-psake -buildFile $env:PSAKE_FILE -taskList $Task -nologo
+    throw 'psake failed'
     exit ([int](-not $psake.build_success))
 } else {
-    Write-Error "Could not find psake file [$env:PSAKE_FILE]"
+    throw "Could not find psake file [$env:PSAKE_FILE]"
     exit 1
 }
