@@ -18,7 +18,9 @@ if (($env:SKIP_REQS -ne 'true' -and $env:SKIP_REQS -ne 1) -and (Test-Path -Path 
 # Execute psake task(s)
 if (Test-Path -Path $env:PSAKE_FILE) {
     Invoke-psake -buildFile $env:PSAKE_FILE -taskList $Task -nologo
-    throw 'psake failed'
+    if (-not $psake.build_success) {
+        throw 'psake failed'
+    }
     exit ([int](-not $psake.build_success))
 } else {
     throw "Could not find psake file [$env:PSAKE_FILE]"
