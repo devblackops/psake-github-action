@@ -7,19 +7,18 @@ RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted; \
 
 FROM base as psake-build
 LABEL "name"                            = "github-action-psake"
-LABEL "version"                         = "1.0.0"
+LABEL "version"                         = "1.1.0"
 LABEL "com.github.actions.name"         = "psake task"
 LABEL "com.github.actions.description"  = "Run psake tasks"
-LABEL "com.github.actions.icon"         = "box"
-LABEL "com.github.actions.color"        = "blue"
+LABEL "com.github.actions.icon"="box"
+LABEL "com.github.actions.color"="blue"
 
 LABEL "repository" = "https://github.com/devblackops/psake-github-actions"
 LABEL "homepage"   = "https://github.com/psake/psake"
 LABEL "maintainer" = "Brandon Olin <brandon@devblackops.io>"
 
-ADD entrypoint.sh  /entrypoint.sh
-ADD run.ps1        /run.ps1
+ADD entrypoint.ps1  /entrypoint.ps1
 
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint.ps1
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["pwsh", "/entrypoint.ps1"]

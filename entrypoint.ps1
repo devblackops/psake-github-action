@@ -1,14 +1,9 @@
 #requires -modules psake, PSDepend, BuildHelpers
 
-[cmdletbinding(DefaultParameterSetName = 'Task')]
+[cmdletbinding()]
 param(
     # Build task(s) to execute
-    [parameter(ParameterSetName = 'task', position = 0)]
-    [string[]]$Task = 'default',
-
-    # List available build tasks
-    [parameter(ParameterSetName = 'Help')]
-    [switch]$Help
+    [string[]]$Task = 'default'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -24,13 +19,8 @@ if (($env:SKIP_REQS -ne 'true' -and $env:SKIP_REQS -ne 1) -and (Test-Path -Path 
 
 # Execute psake task(s)
 if (Test-Path -Path $env:PSAKE_FILE) {
-    if ($PSCmdlet.ParameterSetName -eq 'Help') {
-        Get-PSakeScriptTasks -buildFile $env:PSAKE_FILE  |
-            Format-Table -Property Name, Description, Alias, DependsOn
-    } else {
-        Invoke-psake -buildFile $env:PSAKE_FILE -taskList $Task -nologo
-        exit ([int](-not $psake.build_success))
-    }
+    Invoke-psake -buildFile $env:PSAKE_FILE -taskList $Task -nologo
+    exit ([int](-not $psake.build_success))
 } else {
     Write-Error "Could not find psake file [$env:PSAKE_FILE]"
     exit 1

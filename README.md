@@ -1,4 +1,4 @@
-# psake GitHub actions
+# psake GitHub Action
 
 This official psake [GitHub Action](https://github.com/features/actions) allow you to run [psake](https://github.com/psake/psake) tasks as part of your GitHub workflow.
 
@@ -18,8 +18,8 @@ This action succeeds if the `psake` task(s) complete without error.
 ```hcl
 action "psake test" {
     # Replace <latest tag> with the latest tag from
-    # https://github.com/devblackops/psake-github-actions/releases
-    uses = "devblackops/psake-github-actions/task@<latest tag>"
+    # https://github.com/devblackops/psake-github-action/releases
+    uses = "devblackops/psake-github-action@<latest tag>"
 
     # If you need to change the default psakeFile name, PSDepend requirements file,
     # or skip requirements installation entirely, specify here.
