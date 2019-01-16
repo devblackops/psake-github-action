@@ -10,10 +10,10 @@ LABEL "name"                            = "github-action-psake"
 LABEL "version"                         = "1.1.0"
 LABEL "com.github.actions.name"         = "psake task"
 LABEL "com.github.actions.description"  = "Run psake tasks"
-LABEL "com.github.actions.icon"="box"
-LABEL "com.github.actions.color"="blue"
+LABEL "com.github.actions.icon"="settings"
+LABEL "com.github.actions.color"="green"
 
-LABEL "repository" = "https://github.com/devblackops/psake-github-actions"
+LABEL "repository" = "https://github.com/devblackops/psake-github-action"
 LABEL "homepage"   = "https://github.com/psake/psake"
 LABEL "maintainer" = "Brandon Olin <brandon@devblackops.io>"
 

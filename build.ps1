@@ -1,0 +1,4 @@
+[cmdletbinding()]
+param()
+
+Invoke-Pester
