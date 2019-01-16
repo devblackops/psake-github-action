@@ -4,11 +4,11 @@ workflow "Test" {
 }
 
 action "psake-succeed" {
-    uses = "."
+    uses = "devblackops/psake-github-actions@master"
     args = ["Succeed"]
 }
 
 action "psake-fail" {
-    uses = "."
+    uses = "devblackops/psake-github-actions@master"
     args = ["Fail"]
 }
