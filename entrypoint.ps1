@@ -21,8 +21,6 @@ if (Test-Path -Path $env:PSAKE_FILE) {
     if (-not $psake.build_success) {
         throw 'psake failed'
     }
-    exit ([int](-not $psake.build_success))
 } else {
     throw "Could not find psake file [$env:PSAKE_FILE]"
-    exit 1
 }
