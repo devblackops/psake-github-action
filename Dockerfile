@@ -8,7 +8,7 @@ RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted; \
 
 FROM base as psake-build
 LABEL "name"                            = "github-action-psake"
-LABEL "version"                         = "1.1.0"
+LABEL "version"                         = "1.2.1"
 LABEL "com.github.actions.name"         = "psake task"
 LABEL "com.github.actions.description"  = "Run psake tasks"
 LABEL "com.github.actions.icon"="settings"
