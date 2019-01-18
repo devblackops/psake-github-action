@@ -3,7 +3,8 @@ SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference
 RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted; \
     Install-Module psake        -RequiredVersion 4.8.0-alpha -Repository PSGallery -AllowPrerelease; \
     Install-Module PSDepend     -RequiredVersion 0.3.0       -Repository PSGallery; \
-    Install-Module BuildHelpers -RequiredVersion 2.0.1       -Repository PSGallery
+    Install-Module BuildHelpers -RequiredVersion 2.0.7       -Repository PSGallery; \
+    apk add --no-cache git
 
 FROM base as psake-build
 LABEL "name"                            = "github-action-psake"
