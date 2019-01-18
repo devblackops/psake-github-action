@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:6.1.0-ubuntu-18.04 as base
+FROM mcr.microsoft.com/powershell:6.1.2-alpine-3.8 as base
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted; \
     Install-Module psake        -RequiredVersion 4.8.0-alpha -Repository PSGallery -AllowPrerelease; \
